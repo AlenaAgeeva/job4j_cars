@@ -25,7 +25,7 @@ public class HibernateUserRepository implements UserRepository {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(user);
+            session.persist(user);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -48,7 +48,7 @@ public class HibernateUserRepository implements UserRepository {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.update(user);
+            session.merge(user);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
